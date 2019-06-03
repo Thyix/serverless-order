@@ -1,0 +1,31 @@
+service: serverless-backend
+
+custom:
+  allowedHeaders:
+    - Content-Type
+    - X-Amz-Date
+    - Authorization
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+
+provider:
+  name: aws
+  runtime: java8
+  region: ${env:AWS_DEFAULT_REGION}
+  stage: dev
+  timeout: 10
+
+package:
+  artifact: build/libs/backend-dev.jar
+
+functions:
+  graphql:
+    handler: com.serverlessorder.backend.api.serverless.GraphQLHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
