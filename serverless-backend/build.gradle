@@ -1,10 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group = 'com.medhelper'
+group = 'com.heroesAndVillains'
 version = 'dev'
 
-description = """medhelper api"""
+description = """heroesAndVillains api"""
 
 
 sourceCompatibility = 1.5
