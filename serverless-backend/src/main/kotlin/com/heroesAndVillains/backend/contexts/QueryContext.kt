@@ -6,7 +6,8 @@ class QueryContext {
     fun getQueries(): List<TopLevelObject> {
         val heroContext = HeroContext()
         return listOf(
-            TopLevelObject(heroContext.getHeroesQuery())
+            TopLevelObject(heroContext.getHeroesQuery()),
+            TopLevelObject(heroContext.getHeroQuery())
         )
     }
 }

@@ -4,7 +4,9 @@ import com.expedia.graphql.TopLevelObject
 
 class MutationsContext {
     fun getMutations(): List<TopLevelObject> {
-
-        return emptyList()
+        val heroContext = HeroContext()
+        return listOf(
+            TopLevelObject(heroContext.getAddHeroMutation())
+        )
     }
 }

@@ -15,7 +15,7 @@ class HeroAssembler {
                 id = hero.id,
                 name = (hero as Human).name,
                 realName = hero.realName,
-                universe = hero.universe.toString(),
+                universe = hero.universe,
                 type = hero.javaClass.name
             )
             "SuperHuman" -> SuperHumanResponse(
@@ -23,13 +23,13 @@ class HeroAssembler {
                 name = (hero as SuperHuman).name,
                 realName = hero.realName,
                 superPower = hero.superPower,
-                universe = hero.universe.toString(),
+                universe = hero.universe,
                 type = hero.javaClass.name
             )
             "Robot" -> RobotResponse(
                 id = hero.id,
                 name = (hero as Robot).name,
-                universe = hero.universe.toString(),
+                universe = hero.universe,
                 superPower = hero.superPower,
                 type = hero.javaClass.name
             )
@@ -43,20 +43,20 @@ class HeroAssembler {
                 id = heroType.id,
                 name = (heroType as HumanResponse).name,
                 realName = heroType.realName,
-                universe = ComicUniverse.valueOf(heroType.universe)
+                universe = heroType.universe
             )
             "SuperHuman" -> SuperHuman(
                 id = heroType.id,
                 name = (heroType as SuperHumanResponse).name,
                 realName = heroType.realName,
                 superPower = heroType.superPower,
-                universe = ComicUniverse.valueOf(heroType.universe)
+                universe = heroType.universe
             )
             "Robot" -> Robot(
                 id = heroType.id,
                 name = (heroType as RobotResponse).name,
                 superPower = heroType.superPower,
-                universe = ComicUniverse.valueOf(heroType.universe)
+                universe = heroType.universe
             )
             else -> throw Exception("${heroType.type} is not supported")
         }

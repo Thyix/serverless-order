@@ -9,15 +9,15 @@ import com.heroesAndVillains.backend.api.graphql.GraphQLEndpoint
 import com.heroesAndVillains.backend.api.graphql.GraphQLRequest
 
 
-class GraphQLHandler : RequestHandler<Map<String, Any>, com.heroesAndVillains.backend.api.graphql.ApiGatewayResponse> {
+class GraphQLHandler : RequestHandler<Map<String, Any>, ApiGatewayResponse> {
 
-    override fun handleRequest(input: Map<String, Any>, context: Context): com.heroesAndVillains.backend.api.graphql.ApiGatewayResponse {
+    override fun handleRequest(input: Map<String, Any>, context: Context): ApiGatewayResponse {
         val objectMapper = ObjectMapper()
-        val request: com.heroesAndVillains.backend.api.graphql.GraphQLRequest = objectMapper.readValue(input["body"] as String)
+        val request: GraphQLRequest = objectMapper.readValue(input["body"] as String)
 
-        val result = com.heroesAndVillains.backend.api.graphql.GraphQLEndpoint().execute(request)
+        val result = GraphQLEndpoint().execute(request)
 
-        return com.heroesAndVillains.backend.api.graphql.ApiGatewayResponse.build {
+        return ApiGatewayResponse.build {
             statusCode = 200
             objectBody = result
             headers = mapOf("Access-Control-Allow-Origin" to "*")
